@@ -5,9 +5,15 @@ import './episode-info.css';
 
 class EpisodeInfo extends Component {
 	getEpisodeDescriptionAsHtml(episode) {
-		return {
-			__html: sanitizeHtml(episode.description)
-		};
+		if (episode.description !== undefined) {
+			return {
+				__html: sanitizeHtml(episode.description)
+			};
+		} else {
+			return {
+				__html: "<p><em>(No description available for this episode)</em></p>"
+			}
+		}
 	}
 
 	render() {
@@ -16,7 +22,7 @@ class EpisodeInfo extends Component {
 		if (episode !== undefined)  {
 			return (
 				<section id="podcast-episode-detail">
-					<h2>{episode.title}</h2>
+					<h2>{episode.title || ""}</h2>
 
 					<div className="podcast-episode-description"
 						 dangerouslySetInnerHTML={this.getEpisodeDescriptionAsHtml(episode)} />
