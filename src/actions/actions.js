@@ -225,14 +225,10 @@ export const fetchPodcastEpisodes = (podcastId) => {
 							if (descriptions.length > 0) {
 								description = descriptions[0].childNodes[0].nodeValue;
 								description = description.replace('<![CDATA[', '').replace(']]>', '');
-								// Trick to decode HTML entities
-								//description = $('<textarea />').html(description).text();
 							} else {
 								descriptions = items[i].getElementsByTagName('summary');
 								description = descriptions[0].childNodes[0].nodeValue;
 								description = description.replace('<![CDATA[', '').replace(']]>', '');
-								// Trick to decode HTML entities
-								//description = $('<textarea />').html(description).text();
 							}
 
 							let duration,
