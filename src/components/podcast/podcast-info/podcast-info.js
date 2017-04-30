@@ -21,7 +21,7 @@ class PodcastInfo extends Component {
 	render() {
 		let { podcast } = this.props;
 
-		if (podcast != null) {
+		if (podcast !== undefined) {
 			return (
 				<section id="podcast-detail">
 					<Link to={`/podcast/${podcast.id}`} title="Go back to podcast detail">

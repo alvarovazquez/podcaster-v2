@@ -18,7 +18,7 @@ class PodcastEpisodes extends Component {
 	render() {
 		let { podcast, episodes } = this.props;
 
-		if (episodes !== undefined && episodes.length > 0) {
+		if (podcast !== undefined && episodes !== undefined && episodes.length > 0) {
 			return (
 				<section id="podcast-episodes">
 					<header><h2>Episodes: {episodes.length}</h2></header>
@@ -41,7 +41,7 @@ class PodcastEpisodes extends Component {
 						</table>
 					</div>
 				</section>
-		    );
+			);
 		} else {
 			return null;
 		}
