@@ -1,0 +1,67 @@
+#podcast-episodes {
+	float: right;
+	width: 69%;
+	margin: 0 1% 15px 0;
+}
+
+#podcast-episodes > header {
+	margin-bottom: 15px;
+	box-shadow: 0px 2px 4px 0px #BBB;
+	padding: 10px;
+}
+
+#podcast-episodes > header > h2 {
+	margin: 0;
+	font-size: 1.5em;
+	color: #333;
+}
+
+#podcast-episodes > .episodes {
+	box-shadow: 0px 2px 4px 0px #BBB;
+	padding: 20px;
+} 
+
+#podcast-episodes > .episodes > table.episode-list {
+	padding: 30px 20px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#podcast-episodes > .episodes > table.episode-list > thead > tr > th {
+	border-bottom: 2px solid #DDD;
+	font-weight: bold;
+	text-align: left;
+	font-size: 0.8em;
+	padding: 7px;
+	color: #333;
+}
+
+#podcast-episodes > .episodes > table.episode-list > thead > tr > th.duration {
+	text-align: right;
+}
+
+#podcast-episodes > .episodes > table.episode-list > tbody > tr:nth-child(2n+1) {
+	background-color: #EEE;
+}
+#podcast-episodes > .episodes > table.episode-list > tbody > tr:nth-child(2n) {
+	background-color: #FFF;
+}
+
+#podcast-episodes > .episodes > table.episode-list > tbody > tr > td {
+	border-bottom: 1px solid #DDD;
+	font-size: 0.8em;
+	padding: 7px;
+	color: #333;
+}
+
+#podcast-episodes > .episodes > table.episode-list > tbody > tr > td.duration {
+	text-align: right;
+}
+
+#podcast-episodes > .episodes > table.episode-list > tbody > tr > td.date {
+
+}
+
+#podcast-episodes > .episodes > table.episode-list > tbody > tr > td > a:hover {
+	text-decoration: underline;
+}

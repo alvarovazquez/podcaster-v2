@@ -1,0 +1,59 @@
+#podcast-detail {
+	float: left;
+	width: 25%;
+	margin: 0 3% 15px 1%;
+	padding: 15px 10px;
+	box-shadow: 0px 2px 4px 0px #BBB;
+}
+
+#podcast-detail > a > img {
+	display: block;
+	border-radius: 5px;
+	width: 150px;
+	margin: 0 auto;
+}
+
+#podcast-detail > .main-info {
+	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
+	padding: 25px 5px;
+	margin: 15px auto;
+}
+
+#podcast-detail > .main-info > a:hover {
+	text-decoration: underline;
+	color: #000;
+}
+
+#podcast-detail > .main-info > a > h2 {
+	margin: 0;
+	font-size: .8em;
+	color: #000;
+}
+
+#podcast-detail > .main-info > .author {
+	font-size: .8em;
+	color: #333;
+	font-style: italic;
+}
+
+#podcast-detail > .main-info > .author > a {
+	color: #333;
+}
+
+#podcast-detail > .main-info > .author > a:hover {
+	text-decoration: underline;
+}
+
+#podcast-detail > .description {
+	font-size: .75em;
+	font-style: italic;
+	color: #333;
+}
+
+#podcast-detail > .description > h3 {
+	font-size: .75em;
+	margin: 0;
+	color: #333;
+	margin-bottom: 10px;
+}

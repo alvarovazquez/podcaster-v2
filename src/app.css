@@ -1,0 +1,50 @@
+/* Font family */
+/*
+@font-face {
+	font-family: 'Myriad Pro';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../assets/fonts/Myriad-Pro.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: 'Myriad Pro';
+	font-style: normal;
+	font-weight: bold;
+	src: url('../assets/fonts/Myriad-Pro-Bold.ttf') format('ttf');
+}
+
+
+@font-face {
+	font-family: 'Myriad Pro';
+	font-style: normal;
+	font-weight: lighter;
+	src: url('../assets/fonts/Myriad-Pro-Light.ttf') format('ttf');
+}
+*/
+
+* {
+	font-family: 'Myriad-Pro', sans-serif;
+	box-sizing: border-box;
+	word-wrap: break-word;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+	text-decoration: none;
+	color: #08C;
+	cursor: pointer;
+}
+
+body {
+	margin: 0;
+}
+
+main {
+	max-width: 1000px;
+	margin: 0 auto;
+}

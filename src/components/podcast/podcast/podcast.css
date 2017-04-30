@@ -1,0 +1,36 @@
+.podcast {
+	display: block;
+	float: left;
+	width: 23%;
+    margin: 55px 1% 20px 1%;
+    padding: 0;
+	text-align: center;
+	box-shadow: 0px 2px 4px 0px #BBB;
+}
+
+.podcast a {
+	display: block;
+	width: 100%;
+	padding: 10px 15px;
+}
+
+.podcast a img {
+	border-radius: 50%;
+	width: 85px;
+	height: 85px;
+	display: block;
+	margin: -43px auto 5px auto;
+	background-color: #EEE;
+}
+
+.podcast a h2 {
+	text-transform: uppercase;
+	color: #000;
+	font-size: 1em;
+	font-size: 0.8em;
+}
+
+.podcast a .author {
+	color: #777;
+	font-size: .8em;
+}

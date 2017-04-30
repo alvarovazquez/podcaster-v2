@@ -1,0 +1,22 @@
+#podcast-episode-detail {
+	float: right;
+	width: 69%;
+	margin: 0 1% 15px 0;
+	padding: 10px;
+	box-shadow: 0px 2px 4px 0px #BBB;
+}
+
+#podcast-episode-detail > h2 {
+	margin: 0 0 10px 0;
+	font-size: 1em;
+}
+
+#podcast-episode-detail > .podcast-episode-description {
+	font-style: italic;
+	margin-bottom: 25px;
+	font-size: .8em;
+}
+
+#podcast-episode-detail > .podcast-episode-description img {
+	max-width: 100% !important;
+}
