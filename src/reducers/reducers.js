@@ -15,15 +15,26 @@ const podcasterReducer = (state = {}, action) => {
 				loading: true
 			};
 		case actionTypes.RECEIVE_PODCASTS:
-			return {
-				...state,
-				podcasts: {
-					updated: action.updated,
-					data: action.podcasts,
+			if (action.success === true) {
+				return {
+					...state,
+					podcasts: {
+						updated: action.updated,
+						data: action.podcasts,
+						loading: false
+					},
 					loading: false
-				},
-				loading: false
-			};
+				};
+			} else {
+				return {
+					...state,
+					podcasts: {
+						...state.podcasts,
+						loading: false
+					},
+					loading: false
+				}
+			}
 		case actionTypes.REQUEST_EPISODES:
 			return {
 				...state,
@@ -34,18 +45,29 @@ const podcasterReducer = (state = {}, action) => {
 				loading: true
 			};
 		case actionTypes.RECEIVE_EPISODES:
-			return {
-				...state,
-				episodes: {
-					...state.episodes,
-					[action.podcastId]: {
-						updated: action.updated,
-						data: action.episodes
+			if (action.success === true) {
+				return {
+					...state,
+					episodes: {
+						...state.episodes,
+						[action.podcastId]: {
+							updated: action.updated,
+							data: action.episodes
+						},
+						loading: false
 					},
 					loading: false
-				},
-				loading: false
-			};
+				};
+			} else {
+				return {
+					...state,
+					episodes: {
+						...state.episodes,
+						loading: false
+					},
+					loading: false
+				}
+			}
 		default:
 			return state;
 	}

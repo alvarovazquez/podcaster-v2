@@ -24,8 +24,9 @@ export const requestPodcasts = () => ({
 	type: actionTypes.REQUEST_PODCASTS
 });
 
-export const receivePodcasts = (podcasts) => ({
+export const receivePodcasts = (success, podcasts) => ({
 	type: actionTypes.RECEIVE_PODCASTS,
+	success,
 	podcasts,
 	updated: Date.now()
 });
@@ -53,10 +54,13 @@ const fetchPodcasts = () => {
 
 		fetchPodcastsFromFeed()
 		.then(podcasts => 
-			dispatch(receivePodcasts(podcasts))
+			dispatch(receivePodcasts(true, podcasts))
 		)
-		.catch(error => 
-			console.error(error)
+		.catch(error => {
+				console.error(error);
+
+				receivePodcasts(false);
+			}
 		);
 	};
 };
@@ -85,8 +89,9 @@ export const requestPodcastEpisodes = (podcastId) => ({
 	type: actionTypes.REQUEST_EPISODES
 });
 
-export const receivePodcastEpisodes = (podcastId, episodes) => ({
+export const receivePodcastEpisodes = (success, podcastId, episodes) => ({
 	type: actionTypes.RECEIVE_EPISODES,
+	success,
 	podcastId,
 	episodes,
 	updated: Date.now()
@@ -116,10 +121,13 @@ export const fetchPodcastEpisodes = (podcastId) => {
 
 		fetchPodcastEpisodesFromFeed(podcastId)
 		.then(data =>
-			dispatch(receivePodcastEpisodes(data.podcastId, data.episodes))
+			dispatch(receivePodcastEpisodes(true, data.podcastId, data.episodes))
 		)
-		.catch(error =>
-			console.error("Couldn't get episodes information: ", error)
+		.catch(error => {
+				console.error("Couldn't get episodes information: ", error);
+				
+				dispatch(receivePodcastEpisodes(false))
+			}
 		);
 	};
 };
