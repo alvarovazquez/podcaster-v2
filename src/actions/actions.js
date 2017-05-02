@@ -46,7 +46,7 @@ const shouldFetchPodcasts = (state) => {
 	} else {
 		return false
 	}
-}
+};
 
 const fetchPodcasts = () => {
 	return function (dispatch) {
@@ -113,7 +113,7 @@ const shouldFetchPodcastEpisodes = (state, podcastId) => {
 	} else {
 		return false
 	}
-}
+};
 
 export const fetchPodcastEpisodes = (podcastId) => {
 	return function (dispatch) {

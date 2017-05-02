@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { changePodcastTextFilter } from '../../../actions/actions';
-
 import store from '../../../store';
 
 import './podcast-filter.css';
