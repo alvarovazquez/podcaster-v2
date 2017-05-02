@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import PodcastInfo from '../podcast-info/podcast-info';
 import EpisodeInfo from '../episode-info/episode-info';
 
-import { fetchPodcastEpisodes } from '../../../actions/actions';
+import { fetchPodcastEpisodesIfNeeded } from '../../../actions/actions';
 import store from '../../../store';
 
 class EpisodeDetail extends Component {
 	componentWillMount() {
-		store.dispatch(fetchPodcastEpisodes(this.props.params.podcastId));
+		store.dispatch(fetchPodcastEpisodesIfNeeded(this.props.params.podcastId));
 	}
 
 	render() {
