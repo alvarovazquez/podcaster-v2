@@ -2,10 +2,12 @@
 A new version of the Podcaster App made with **React** and **Redux**
 
 ### Prerequisites
-In order to be able to run this web application succesfully, you need **Node Package Manager** previously installed in your computer.
+In order to be able to run this web application succesfully, you need **Node Package Manager**, *ESLint* and *ESLint React Plugin* previously installed in your computer.
 
 For more information: 
 * Install **Node Package Manager**: https://www.npmjs.com/get-npm
+* Install **ESLint**: http://eslint.org/docs/user-guide/getting-started
+* Install **ESLint react Plugin**: https://github.com/yannickcr/eslint-plugin-react
 
 ### Instructions to run this application
 #### Clone this repository
