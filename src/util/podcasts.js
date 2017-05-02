@@ -93,7 +93,7 @@ export const fetchPodcastsFromFeed = () => {
 
 				return podcasts;
 			} else {
-				throw("ERROR parsing podcast information");
+				throw new Error("ERROR parsing podcast information");
 			}
 		}
 	);
@@ -193,7 +193,7 @@ export const fetchPodcastEpisodesFromFeed = (podcastId) => {
 				episodes
 			};
 		} else {
-			throw("ERROR parsing podcast episodes information");
+			throw new Error("ERROR parsing podcast episodes information");
 		}
 	});
 };
