@@ -6,9 +6,9 @@ export const saveState = (state) => {
 
 		localStorage.setItem(LOCAL_STORATE_STATE_KEY, cachedState);
 	} catch (err) {
-		console.error("ERROR saving store to cache", err);
+		console.error('ERROR saving store to cache', err);
 	}
-}
+};
 
 export const loadState = () => {
 	try {
@@ -22,4 +22,4 @@ export const loadState = () => {
 	} catch (err) {
 		return undefined;
 	}
-}
+};

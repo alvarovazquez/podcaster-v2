@@ -22,7 +22,7 @@ export default class Podcast {
 				if (episode.id === episodeId) {
 					return episode;
 				}
-			})
+			});
 		}
 	}
 }

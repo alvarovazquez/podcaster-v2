@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 import './podcast.css';
@@ -18,5 +19,9 @@ class Podcast extends Component {
 		);
 	}
 }
+
+Podcast.propTypes = {
+	podcast: PropTypes.object.isRequired
+};
 
 export default Podcast;

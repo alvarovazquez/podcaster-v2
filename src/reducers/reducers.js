@@ -5,102 +5,103 @@ import { actionTypes } from '../actions/actions';
 
 const podcasterReducer = (state = {}, action) => {
 	switch (action.type) {
-		case actionTypes.REQUEST_PODCASTS:
+	case actionTypes.REQUEST_PODCASTS:
+		return {
+			...state,
+			podcasts: {
+				...state.podcasts,
+				loading: true
+			},
+			loading: true
+		};
+	case actionTypes.RECEIVE_PODCASTS:
+		if (action.success === true) {
+			return {
+				...state,
+				podcasts: {
+					updated: action.updated,
+					data: action.podcasts,
+					loading: false
+				},
+				loading: false
+			};
+		} else {
 			return {
 				...state,
 				podcasts: {
 					...state.podcasts,
-					loading: true
+					loading: false
 				},
-				loading: true
+				loading: false
 			};
-		case actionTypes.RECEIVE_PODCASTS:
-			if (action.success === true) {
-				return {
-					...state,
-					podcasts: {
-						updated: action.updated,
-						data: action.podcasts,
-						loading: false
-					},
-					loading: false
-				};
-			} else {
-				return {
-					...state,
-					podcasts: {
-						...state.podcasts,
-						loading: false
-					},
-					loading: false
-				}
-			}
-		case actionTypes.REQUEST_EPISODES:
+		}
+	case actionTypes.REQUEST_EPISODES:
+		return {
+			...state,
+			episodes: {
+				...state.episodes,
+				loading: true
+			},
+			loading: true
+		};
+	case actionTypes.RECEIVE_EPISODES:
+		if (action.success === true) {
 			return {
 				...state,
 				episodes: {
 					...state.episodes,
-					loading: true
+					[action.podcastId]: {
+						updated: action.updated,
+						data: action.episodes
+					},
+					loading: false
 				},
-				loading: true
+				loading: false
 			};
-		case actionTypes.RECEIVE_EPISODES:
-			if (action.success === true) {
-				return {
-					...state,
-					episodes: {
-						...state.episodes,
-						[action.podcastId]: {
-							updated: action.updated,
-							data: action.episodes
-						},
-						loading: false
-					},
+		} else {
+			return {
+				...state,
+				episodes: {
+					...state.episodes,
 					loading: false
-				};
-			} else {
-				return {
-					...state,
-					episodes: {
-						...state.episodes,
-						loading: false
-					},
-					loading: false
-				}
-			}
-		default:
-			return state;
+				},
+				loading: false
+			};
+		}
+	default:
+		return state;
 	}
 };
 
 const uiReducer = (state = {}, action) => {
 	switch (action.type) {
-		case actionTypes.REQUEST_PODCASTS:
-		case actionTypes.REQUEST_EPISODES:
-			return {
-				...state,
-				loading: true
-			};
-		case actionTypes.RECEIVE_PODCASTS:
-		case actionTypes.RECEIVE_EPISODES:
-			return {
-				...state,
-				loading: false
-			};
-		case actionTypes.CHANGE_PODCAST_TEXT_FILTER:
-			let filterText = action.text;
-			if (filterText === "") {
-				filterText = undefined;
-			}
+	case actionTypes.REQUEST_PODCASTS:
+	case actionTypes.REQUEST_EPISODES:
+		return {
+			...state,
+			loading: true
+		};
+	case actionTypes.RECEIVE_PODCASTS:
+	case actionTypes.RECEIVE_EPISODES:
+		return {
+			...state,
+			loading: false
+		};
+	case actionTypes.CHANGE_PODCAST_TEXT_FILTER: {
+		let filterText = action.text;
+		if (filterText === '') {
+			filterText = undefined;
+		}
 
-			return {
-				...state,
-				filter: filterText
-			};
-		default:
-			return state;
+		return {
+			...state,
+			filter: filterText
+		};
 	}
-}
+	default:
+		return state;
+	}
+};
 
 const podcaster = combineReducers({
 	podcaster: podcasterReducer,

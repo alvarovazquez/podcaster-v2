@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Podcast from '../podcast/podcast';
 import PodcastFilterContainer from '../podcast-filter-container/podcast-filter-container';
@@ -37,6 +38,11 @@ const PodcastList = ({ podcasts, onPodcastClick }) => {
 	} else {
 		return null;
 	}
+};
+
+PodcastList.propTypes = {
+	podcasts: PropTypes.array,
+	onPodcastClick: PropTypes.func
 };
 
 export default PodcastList;

@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import Spinner from '../spinner/spinner';
 
@@ -8,7 +8,7 @@ const isLoading = (state) => {
 	}
 
 	return false;
-}
+};
 
 const mapStateToProps = (state) => {
 	return {

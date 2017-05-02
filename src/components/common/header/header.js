@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import SpinnerContainer from '../spinner-container/spinner-container'
+import SpinnerContainer from '../spinner-container/spinner-container';
 
-import './header.css'
+import './header.css';
 
 class Header extends Component {
 	render() {

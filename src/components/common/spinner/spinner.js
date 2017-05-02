@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './spinner.css';
 
 class Spinner extends Component {
 	loadingClass(loading) {
 		if (loading === true) {
-			return "loading";
+			return 'loading';
 		}
 
-		return "";
+		return '';
 	}
 
 	render() {
@@ -22,5 +23,9 @@ class Spinner extends Component {
 		);
 	}
 }
+
+Spinner.propTypes = {
+	loading: PropTypes.bool.isRequired
+};
 
 export default Spinner;

@@ -44,7 +44,7 @@ const shouldFetchPodcasts = (state) => {
 	} else if (podcasts.loading) {
 		return false;
 	} else {
-		return false
+		return false;
 	}
 };
 
@@ -57,11 +57,10 @@ const fetchPodcasts = () => {
 			dispatch(receivePodcasts(true, podcasts))
 		)
 		.catch(error => {
-				console.error(error);
+			console.error(error);
 
-				receivePodcasts(false);
-			}
-		);
+			receivePodcasts(false);
+		});
 	};
 };
 
@@ -70,9 +69,9 @@ export const fetchPodcastsIfNeeded = () => {
 		if (shouldFetchPodcasts(getState())) {
 			return dispatch(fetchPodcasts());
 		} else {
-			return Promise.resolve()
+			return Promise.resolve();
 		}
-	}
+	};
 };
 
 export const loadPodcast = (podcastId) => ({
@@ -86,7 +85,8 @@ export const loadPodcastEpisodes = (podcastId) => ({
 });
 
 export const requestPodcastEpisodes = (podcastId) => ({
-	type: actionTypes.REQUEST_EPISODES
+	type: actionTypes.REQUEST_EPISODES,
+	id: podcastId
 });
 
 export const receivePodcastEpisodes = (success, podcastId, episodes) => ({
@@ -111,24 +111,23 @@ const shouldFetchPodcastEpisodes = (state, podcastId) => {
 	} else if (episodes[podcastId].loading) {
 		return false;
 	} else {
-		return false
+		return false;
 	}
 };
 
 export const fetchPodcastEpisodes = (podcastId) => {
 	return function (dispatch) {
-		dispatch(requestPodcasts(podcastId));
+		dispatch(requestPodcastEpisodes(podcastId));
 
 		fetchPodcastEpisodesFromFeed(podcastId)
 		.then(data =>
 			dispatch(receivePodcastEpisodes(true, data.podcastId, data.episodes))
 		)
 		.catch(error => {
-				console.error("Couldn't get episodes information: ", error);
-				
-				dispatch(receivePodcastEpisodes(false))
-			}
-		);
+			console.error('Couldn\'t get episodes information: ', error);
+			
+			dispatch(receivePodcastEpisodes(false));
+		});
 	};
 };
 
@@ -137,7 +136,7 @@ export const fetchPodcastEpisodesIfNeeded = (podcastId) => {
 		if (shouldFetchPodcastEpisodes(getState(), podcastId)) {
 			return dispatch(fetchPodcastEpisodes(podcastId));
 		} else {
-			return Promise.resolve()
+			return Promise.resolve();
 		}
-	}
+	};
 };

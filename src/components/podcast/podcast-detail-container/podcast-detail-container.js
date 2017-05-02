@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import PodcastDetail from '../podcast-detail/podcast-detail';
 
@@ -20,7 +20,7 @@ const getEpisodes = (state, podcastId) => {
 	if (state.podcaster.episodes[podcastId]) {
 		return state.podcaster.episodes[podcastId].data;
 	}
-}
+};
 
 const mapStateToProps = (state, ownProps) => {
 	return {

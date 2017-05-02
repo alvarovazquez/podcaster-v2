@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { changePodcastTextFilter } from '../../../actions/actions';
 import store from '../../../store';
@@ -19,13 +20,18 @@ class PodcastDetail extends Component {
 					{podcastCount}
 				</span>
 				
-				<input id="podcast-filter-text"
-				       type="text"
-				       placeholder="Filter podcasts.."
-				       onKeyUp={this.changeFilter} />
+				<input
+					id="podcast-filter-text"
+					type="text"
+					placeholder="Filter podcasts.."
+					onKeyUp={this.changeFilter} />
 			</div>
 		);
 	}
 }
+
+PodcastDetail.propTypes = {
+	podcastCount: PropTypes.number.isRequired
+};
 
 export default PodcastDetail;

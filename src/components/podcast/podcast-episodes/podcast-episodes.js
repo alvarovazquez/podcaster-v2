@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import PodcastEpisode from '../podcast-episode/podcast-episode';
 
@@ -47,5 +48,10 @@ class PodcastEpisodes extends Component {
 		}
 	}
 }
+
+PodcastEpisodes.propTypes = {
+	podcast: PropTypes.object,
+	episodes: PropTypes.array
+};
 
 export default PodcastEpisodes;

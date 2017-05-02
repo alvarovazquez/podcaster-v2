@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 
 import './episode-info.css';
@@ -11,8 +12,8 @@ class EpisodeInfo extends Component {
 			};
 		} else {
 			return {
-				__html: "<p><em>(No description available for this episode)</em></p>"
-			}
+				__html: '<p><em>(No description available for this episode)</em></p>'
+			};
 		}
 	}
 
@@ -22,10 +23,10 @@ class EpisodeInfo extends Component {
 		if (episode !== undefined)  {
 			return (
 				<section id="podcast-episode-detail">
-					<h2>{episode.title || ""}</h2>
+					<h2>{episode.title || ''}</h2>
 
 					<div className="podcast-episode-description"
-						 dangerouslySetInnerHTML={this.getEpisodeDescriptionAsHtml(episode)} />
+						dangerouslySetInnerHTML={this.getEpisodeDescriptionAsHtml(episode)} />
 
 					<audio controls>
 						<source src={episode.media.url} type={episode.media.type} />
@@ -37,5 +38,9 @@ class EpisodeInfo extends Component {
 		}
 	}
 }
+
+EpisodeInfo.propTypes = {
+	episode: PropTypes.object
+};
 
 export default EpisodeInfo;

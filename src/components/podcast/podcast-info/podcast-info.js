@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 import './podcast-info.css';
 
 class PodcastInfo extends Component {
 	renderDescription(podcast) {
-		if (podcast.description !== undefined && podcast.description !== "") {
+		if (podcast.description !== undefined && podcast.description !== '') {
 			return (
 				<div className="description">
 					<h3>Description:</h3>
@@ -39,11 +40,15 @@ class PodcastInfo extends Component {
 						this.renderDescription(podcast)
 					}
 				</section>
-		    );
+			);
 		} else {
 			return null;
 		}
 	}
 }
+
+PodcastInfo.propTypes = {
+	podcast: PropTypes.object
+};
 
 export default PodcastInfo;

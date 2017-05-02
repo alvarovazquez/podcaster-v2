@@ -7,13 +7,13 @@ const PODCAST_CONFIG = {
 	PODCASTS_FEED_URL: 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
 	EPISODES_FEED_URL: 'https://itunes.apple.com/lookup?id=',
 	CORS_PROXY_URL: 'https://cors-anywhere.herokuapp.com/'
-}
+};
 
 export const getFilteredPodcasts = (podcasts, filter) => {
 	let filteredPodcasts = [];
 
 	if (podcasts !== undefined && podcasts.length !== undefined) {
-		if (filter !== undefined && filter !== "") {
+		if (filter !== undefined && filter !== '') {
 			podcasts.forEach((podcast) => {
 				if (podcast.title.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
 					podcast.author.toLowerCase().indexOf(filter.toLowerCase()) > -1) {
@@ -21,7 +21,7 @@ export const getFilteredPodcasts = (podcasts, filter) => {
 				}
 			});
 		} else {
-			filteredPodcasts = podcasts;
+			filteredPodcasts = podcasts || [];
 		}
 	}
 	
@@ -38,7 +38,7 @@ export const fetchPodcastsFromFeed = () => {
 				json.feed.entry !== undefined &&
 				json.feed.entry.length !== undefined) {
 
-				json.feed.entry.forEach((entryTmp, i) => {
+				json.feed.entry.forEach((entryTmp) => {
 					// Check information integrity
 					let id;
 					if (entryTmp.id !== undefined &&
@@ -46,7 +46,7 @@ export const fetchPodcastsFromFeed = () => {
 						entryTmp.id.attributes['im:id'] !== undefined) {
 						id = entryTmp.id.attributes['im:id'];
 					} else {
-						console.error("Couldn't get field 'id' for podcast %O", entryTmp);
+						console.error('Couldn\'t get field "id" for podcast %O', entryTmp);
 					}
 
 					let title;
@@ -54,7 +54,7 @@ export const fetchPodcastsFromFeed = () => {
 						entryTmp.title.label !== undefined) {
 						title = entryTmp.title.label;
 					} else {
-						console.warn("Couldn't get field 'title' for podcast %O", entryTmp);
+						console.warn('Couldn\'t get field "title" for podcast %O', entryTmp);
 					}
 
 					let author;
@@ -62,7 +62,7 @@ export const fetchPodcastsFromFeed = () => {
 						entryTmp['im:artist'].label !== undefined) {
 						author = entryTmp['im:artist'].label;
 					} else {
-						console.warn("Couldn't get field 'author' for podcast %O", entryTmp);
+						console.warn('Couldn\'t get field "author" for podcast %O', entryTmp);
 					}
 
 					let description;
@@ -70,16 +70,16 @@ export const fetchPodcastsFromFeed = () => {
 						entryTmp.summary.label !== undefined) {
 						description = entryTmp.summary.label;
 					} else {
-						console.warn("Couldn't get field 'description' for podcast %O", entryTmp);
+						console.warn('Couldn\'t get field "description" for podcast %O', entryTmp);
 					}
 
 					let image;
 					if (entryTmp['im:image'] !== undefined &&
 						entryTmp['im:image'][2] !== undefined &&
 						entryTmp['im:image'][2].label !== undefined) {
-						image = entryTmp['im:image'][2].label
+						image = entryTmp['im:image'][2].label;
 					} else {
-						console.warn("Couldn't get field 'image' for podcast %O", entryTmp);
+						console.warn('Couldn\'t get field "image" for podcast %O', entryTmp);
 					}
 
 					if (id !== undefined) {
@@ -93,7 +93,7 @@ export const fetchPodcastsFromFeed = () => {
 
 				return podcasts;
 			} else {
-				throw new Error("ERROR parsing podcast information");
+				throw new Error('ERROR parsing podcast information');
 			}
 		}
 	);
@@ -112,13 +112,13 @@ export const fetchPodcastEpisodesFromFeed = (podcastId) => {
 			// We get the actual feed and parse it to get the episode list
 			return data.results[0].feedUrl;
 		} else {
-			throw("ERROR Unknown data format for podcast id = %s, Data: %O", podcastId, data);
+			throw('ERROR Unknown data format for podcast id = %s, Data: %O', podcastId, data);
 		}
 	})
 	.then(feedUrl => {
-		let parameterPrefix = "?";
-		if (feedUrl.indexOf("?") > -1) {
-			parameterPrefix = "&";
+		let parameterPrefix = '?';
+		if (feedUrl.indexOf('?') > -1) {
+			parameterPrefix = '&';
 		}
 
 		return fetch(`${PODCAST_CONFIG.CORS_PROXY_URL}${feedUrl}${parameterPrefix}format=xml`);
@@ -128,8 +128,8 @@ export const fetchPodcastEpisodesFromFeed = (podcastId) => {
 		let episodes = [];
 
 		let parser = new DOMParser(),
-			xmlDoc = parser.parseFromString(data, "text/xml"),
-			items = xmlDoc.getElementsByTagName("item"),
+			xmlDoc = parser.parseFromString(data, 'text/xml'),
+			items = xmlDoc.getElementsByTagName('item'),
 			i = 0;
 			
 		if (items.length > 0) {
@@ -184,7 +184,7 @@ export const fetchPodcastEpisodesFromFeed = (podcastId) => {
 
 					episodes.push(episode);
 				} catch (err) {
-					throw("ERROR parsing episode information", err);
+					throw('ERROR parsing episode information', err);
 				}
 			}
 
@@ -193,7 +193,7 @@ export const fetchPodcastEpisodesFromFeed = (podcastId) => {
 				episodes
 			};
 		} else {
-			throw new Error("ERROR parsing podcast episodes information");
+			throw new Error('ERROR parsing podcast episodes information');
 		}
 	});
 };
