@@ -92,6 +92,8 @@ export const fetchPodcastsFromFeed = () => {
 				});
 
 				return podcasts;
+			} else {
+				throw("ERROR parsing podcast information");
 			}
 		}
 	);
@@ -114,7 +116,12 @@ export const fetchPodcastEpisodesFromFeed = (podcastId) => {
 		}
 	})
 	.then(feedUrl => {
-		return fetch(`${PODCAST_CONFIG.CORS_PROXY_URL}${feedUrl}?format=xml`);
+		let parameterPrefix = "?";
+		if (feedUrl.indexOf("?") > -1) {
+			parameterPrefix = "&";
+		}
+
+		return fetch(`${PODCAST_CONFIG.CORS_PROXY_URL}${feedUrl}${parameterPrefix}format=xml`);
 	})
 	.then(response => response.text())
 	.then(data => {
@@ -185,6 +192,8 @@ export const fetchPodcastEpisodesFromFeed = (podcastId) => {
 				podcastId,
 				episodes
 			};
+		} else {
+			throw("ERROR parsing podcast episodes information");
 		}
 	});
 };
